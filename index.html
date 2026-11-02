@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add USDT (InvestArab Bridged USDT) on Base to your wallet</title>
+<style>
+  :root{color-scheme:dark}
+  body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#071311;color:#edf9f5;line-height:1.6;padding:40px 20px}
+  main{max-width:620px;margin:5vh auto}
+  .card{border:1px solid #1d4d3e;border-radius:14px;padding:20px;background:#0d1f1a}
+  img{width:96px;height:96px;border-radius:50%}
+  code{font-size:.85em;overflow-wrap:anywhere;color:#a9e7c9}
+  button{font:inherit;font-weight:600;padding:12px 18px;border-radius:10px;border:0;background:#26A17B;color:#04110d;cursor:pointer;margin-top:16px}
+  .muted{opacity:.75;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>InvestArab Bridged USDT</h1>
+  <div class="card">
+    <img src="icon-256.png" alt="USDT icon">
+    <p><strong>Bridged token.</strong> Issued and operated by InvestArab on Base. Not issued by, redeemable by, or affiliated with Tether. The T mark is used to identify a bridged version of a Tether-issued token.</p>
+    <p>Network: <strong>Base</strong> (chain ID 8453)<br>
+       Contract: <code>0x65e2F96217D84e2D712c1f17819f95F593Eb41Fb</code><br>
+       Decimals: 6 &middot; fixed supply 100,000,000 &middot; no transfer fee</p>
+    <button id="add">Add USDT to my wallet</button>
+    <p class="muted" id="status"></p>
+  </div>
+</main>
+<script>
+const CHAIN_ID = '0x2105'; // Base
+const TOKEN = {
+  address: '0x65e2F96217D84e2D712c1f17819f95F593Eb41Fb',
+  symbol: 'USDT',
+  decimals: 6,
+  image: new URL('icon-256.png', location.href).href
+};
+const status = document.getElementById('status');
+document.getElementById('add').onclick = async () => {
+  if (!window.ethereum) { status.textContent = 'No wallet detected — open this page inside your wallet app browser.'; return; }
+  try {
+    try {
+      await window.ethereum.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: CHAIN_ID }] });
+    } catch (e) {
+      if (e.code === 4902) {
+        await window.ethereum.request({ method: 'wallet_addEthereumChain', params: [{
+          chainId: CHAIN_ID,
+          chainName: 'Base',
+          nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+          rpcUrls: ['https://mainnet.base.org'],
+          blockExplorerUrls: ['https://basescan.org']
+        }] });
+      } else throw e;
+    }
+    // EIP-747 carries no chainId, so the switch above must happen first
+    await window.ethereum.request({ method: 'wallet_watchAsset', params: { type: 'ERC20', options: TOKEN } });
+    status.textContent = 'Request sent — confirm it in your wallet.';
+  } catch (e) {
+    status.textContent = 'Failed: ' + (e.message || e);
+  }
+};
+</script>
+</body>
+</html>

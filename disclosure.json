@@ -1,0 +1,42 @@
+{
+  "token": "0x65e2F96217D84e2D712c1f17819f95F593Eb41Fb",
+  "chainId": 8453,
+  "name": "InvestArab Bridged USDT",
+  "symbol": "USDT",
+  "decimals": 6,
+  "totalSupply": "100000000",
+  "mintable": false,
+  "burnable": false,
+  "transferFee": 0,
+  "generatedAt": "2026-11-02T10:37:43Z",
+  "distribution": {
+    "locked_supply": {
+      "amount": "70000000",
+      "percent": 70.0,
+      "holder": "0x9904154974c03e6D0866685366BC295e684e9b40",
+      "unlock": "2027-10-01",
+      "contract": "InvestArabLock"
+    },
+    "holders_community": {
+      "addresses": 15021,
+      "percent": 26.1
+    },
+    "treasury": {
+      "holder": "0x72742A7323fde43240f1A80617cdD888A0a90DB6",
+      "amount": "3803094.399736",
+      "percent": 3.8
+    },
+    "liquidity_pool": {
+      "pair": "0xBC36C8c20F040397Dbea8E66c7AF50Af76c0a510",
+      "percent": 0.0011
+    },
+    "locked_lp_percent": 94.6
+  },
+  "notes": [
+    "Fixed supply set in constructor; no mint, no burn, no fee, no blacklist, no pause, ownership renounced (owner = 0x0).",
+    "Contract source verified on Basescan and Sourcify.",
+    "ERC-7572 contractURI carries on-chain metadata as a self-contained data URI."
+  ],
+  "top10_concentration_percent": 73.8,
+  "circulating_supply": "26110000"
+}

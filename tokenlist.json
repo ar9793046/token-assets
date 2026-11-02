@@ -1,0 +1,32 @@
+{
+  "name": "InvestArab Base Token List",
+  "logoURI": "https://cdn.jsdelivr.net/gh/ar9793046/token-assets@main/icon-256.png",
+  "timestamp": "2026-11-02T00:00:00Z",
+  "version": {
+    "major": 1,
+    "minor": 2,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 8453,
+      "address": "0x65e2F96217D84e2D712c1f17819f95F593Eb41Fb",
+      "name": "InvestArab Bridged USDT",
+      "symbol": "USDT",
+      "decimals": 6,
+      "logoURI": "https://cdn.jsdelivr.net/gh/ar9793046/token-assets@main/icon-256.png",
+      "tags": [
+        "stablecoin",
+        "base",
+        "bridged"
+      ],
+      "extensions": {
+        "supply": "100000000",
+        "circulating": "26110000",
+        "lockedSupplyHolder": "0x9904154974c03e6D0866685366BC295e684e9b40",
+        "lockedLpPercent": 94.6,
+        "disclosure": "https://cdn.jsdelivr.net/gh/ar9793046/token-assets@main/disclosure.json"
+      }
+    }
+  ]
+}
